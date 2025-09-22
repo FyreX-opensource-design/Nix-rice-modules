@@ -1,0 +1,1 @@
+SAI_BIN=$(nix eval --raw -f ./main.nix swayAudioIdleBin)

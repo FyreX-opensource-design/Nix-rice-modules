@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout name="default-layout" version="1.0">
+  <description>Default gtklock layout configuration</description>
+  
+  <!-- Main container settings -->
+  <container orientation="vertical" alignment="center" spacing="24">
+    <padding top="40" right="40" bottom="40" left="40"/>
+    
+    <!-- Clock component -->
+    <component type="clock" enabled="true" position="top-center">
+      <time enabled="true" format="%H:%M" font="Inter 72" color="#ffffff" shadow="rgba(0, 0, 0, 0.5)"/>
+      <date enabled="true" format="%A, %B %d, %Y" font="Inter 18" color="rgba(255, 255, 255, 0.8)" shadow="rgba(0, 0, 0, 0.3)"/>
+      <animation type="fade-in" duration="500" easing="ease-in-out"/>
+    </component>
+    
+    <!-- User info component -->
+    <component type="user-info" enabled="true" position="top-right">
+      <avatar enabled="true" size="48" border="2px solid rgba(255, 255, 255, 0.2)"/>
+      <name enabled="true" font="Inter 14" color="#ffffff"/>
+      <background color="rgba(255, 255, 255, 0.1)" border-radius="50" padding="12" backdrop-filter="blur(10px)"/>
+    </component>
+    
+    <!-- Password input component -->
+    <component type="password-input" enabled="true" position="center">
+      <input placeholder="Enter password" width="300">
+        <style>
+          <background color="rgba(255, 255, 255, 0.1)"/>
+          <border width="2px" style="solid" color="rgba(255, 255, 255, 0.2)"/>
+          <border-radius value="12"/>
+          <padding top="16" right="24" bottom="16" left="24"/>
+          <font size="16" family="Inter" color="#ffffff"/>
+          <backdrop-filter value="blur(10px)"/>
+          <transition property="all" duration="0.3s" timing="ease"/>
+        </style>
+        <focus>
+          <border-color color="rgba(255, 255, 255, 0.5)"/>
+          <background color="rgba(255, 255, 255, 0.15)"/>
+          <box-shadow color="rgba(255, 255, 255, 0.1)" blur="20px"/>
+        </focus>
+      </input>
+      <animation type="slide-up" duration="300" easing="ease-out"/>
+    </component>
+    
+    <!-- Unlock button component -->
+    <component type="unlock-button" enabled="true" position="center-below">
+      <button text="Unlock">
+        <style>
+          <background color="rgba(255, 255, 255, 0.1)"/>
+          <border width="2px" style="solid" color="rgba(255, 255, 255, 0.2)"/>
+          <border-radius value="8"/>
+          <padding top="12" right="24" bottom="12" left="24"/>
+          <font size="14" family="Inter" color="#ffffff"/>
+          <backdrop-filter value="blur(10px)"/>
+          <transition property="all" duration="0.3s" timing="ease"/>
+        </style>
+        <hover>
+          <background color="rgba(255, 255, 255, 0.2)"/>
+          <border-color color="rgba(255, 255, 255, 0.4)"/>
+          <transform translate-y="-2px"/>
+        </hover>
+        <active>
+          <transform translate-y="0"/>
+        </active>
+      </button>
+      <animation type="slide-up" duration="300" easing="ease-out"/>
+    </component>
+    
+    <!-- Notifications component -->
+    <component type="notifications" enabled="true" position="top-left">
+      <max-visible count="3"/>
+      <style>
+        <background color="rgba(255, 255, 255, 0.1)"/>
+        <border-radius value="8"/>
+        <padding value="12"/>
+        <backdrop-filter value="blur(10px)"/>
+        <border width="1px" style="solid" color="rgba(255, 255, 255, 0.1)"/>
+      </style>
+    </component>
+    
+    <!-- Error display component -->
+    <component type="error-display" enabled="true" position="center-below-input">
+      <style>
+        <font size="14" color="#ff6b6b"/>
+        <background color="rgba(255, 107, 107, 0.1)"/>
+        <padding top="8" right="16" bottom="8" left="16"/>
+        <border-radius value="6"/>
+        <border width="1px" style="solid" color="rgba(255, 107, 107, 0.3)"/>
+      </style>
+    </component>
+    
+    <!-- System info component (optional) -->
+    <component type="system-info" enabled="false" position="bottom-left">
+      <battery enabled="false"/>
+      <network enabled="false"/>
+      <volume enabled="false"/>
+      <style>
+        <background color="rgba(255, 255, 255, 0.05)"/>
+        <border-radius value="6"/>
+        <padding value="8"/>
+        <font size="12" color="rgba(255, 255, 255, 0.7)"/>
+      </style>
+    </component>
+  </container>
+  
+  <!-- Background configuration -->
+  <background type="gradient">
+    <gradient direction="135deg">
+      <stop offset="0%" color="#1a1a1a"/>
+      <stop offset="100%" color="#2d2d2d"/>
+    </gradient>
+    <blur enabled="true" amount="8" noise="0.1" brightness="0.8" contrast="1.2" saturation="1.2"/>
+  </background>
+  
+  <!-- Animation definitions -->
+  <animations>
+    <animation name="fade-in" duration="500" easing="ease-in-out">
+      <property name="opacity" from="0" to="1"/>
+      <property name="transform" from="translateY(20px)" to="translateY(0)"/>
+    </animation>
+    
+    <animation name="slide-up" duration="300" easing="ease-out">
+      <property name="opacity" from="0" to="1"/>
+      <property name="transform" from="translateY(30px)" to="translateY(0)"/>
+    </animation>
+    
+    <animation name="spin" duration="1000" easing="linear" iteration="infinite">
+      <property name="transform" from="rotate(0deg)" to="rotate(360deg)"/>
+    </animation>
+  </animations>
+  
+  <!-- Responsive breakpoints -->
+  <responsive>
+    <breakpoint max-width="768" name="mobile">
+      <component type="clock">
+        <time font="Inter 48"/>
+        <date font="Inter 16"/>
+      </component>
+      <component type="password-input">
+        <input width="250">
+          <style>
+            <padding top="12" right="20" bottom="12" left="20"/>
+          </style>
+        </input>
+      </component>
+    </breakpoint>
+  </responsive>
+  
+  <!-- Theme definitions -->
+  <themes>
+    <theme name="dark">
+      <background>
+        <gradient direction="135deg">
+          <stop offset="0%" color="#0a0a0a"/>
+          <stop offset="100%" color="#1a1a1a"/>
+        </gradient>
+      </background>
+      <component type="password-input">
+        <input>
+          <style>
+            <background color="rgba(0, 0, 0, 0.3)"/>
+            <border-color color="rgba(255, 255, 255, 0.1)"/>
+          </style>
+          <focus>
+            <background color="rgba(0, 0, 0, 0.4)"/>
+            <border-color color="rgba(255, 255, 255, 0.3)"/>
+          </focus>
+        </input>
+      </component>
+    </theme>
+  </themes>
+  
+  <!-- Loading indicator styling -->
+  <loading-indicator>
+    <style>
+      <width value="20px"/>
+      <height value="20px"/>
+      <border width="2px" style="solid" color="rgba(255, 255, 255, 0.3)"/>
+      <border-radius value="50%"/>
+      <border-top-color color="#ffffff"/>
+      <animation name="spin"/>
+    </style>
+  </loading-indicator>
+</layout>
